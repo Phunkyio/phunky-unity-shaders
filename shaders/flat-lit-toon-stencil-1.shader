@@ -1,4 +1,4 @@
-Shader "CubedParadox/flat-lit-toon-stencil-1"
+Shader "Phunky/flat-lit-toon-stencil-1"
 {
 	Properties
 	{
