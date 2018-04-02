@@ -398,5 +398,4 @@ Shader "Phunky/phunky-toon-shader-dissolve" {
         }
     }
     FallBack "Diffuse"
-    CustomEditor "ShaderForgeMaterialInspector"
 }
