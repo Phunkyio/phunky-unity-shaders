@@ -1,4 +1,4 @@
-Shader "Phunky/phunky-toon-shader-dissolve" {
+Shader "Phunky/phunky-toon-shader" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Main texture (RGB)", 2D) = "white" {}
@@ -14,6 +14,7 @@ Shader "Phunky/phunky-toon-shader-dissolve" {
         [MaterialToggle] _NoLightShading ("No Light Shading", Float ) = 0
         _EmissionMap ("Emission Map", 2D) = "white" {}
         _Emission ("Emission", Range(0, 10)) = 0
+        _EmissionColor ("Emission Color", Color) = (0.5,0.5,0.5,1)
         _Intensity ("Intensity", Range(0, 10)) = 1
         _NormalMap ("Normal Map", 2D) = "bump" {}
         _OutlineWidth ("Outline Width", Float ) = 0
@@ -121,6 +122,7 @@ Shader "Phunky/phunky-toon-shader-dissolve" {
             uniform sampler2D _Ramp; uniform float4 _Ramp_ST;
             uniform sampler2D _DissolveTexture; uniform float4 _DissolveTexture_ST;
             uniform float _DissolveAmount;
+            uniform float4 _EmissionColor;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -166,7 +168,7 @@ Shader "Phunky/phunky-toon-shader-dissolve" {
                 float attenuation = LIGHT_ATTENUATION(i);
 ////// Emissive:
                 float4 _EmissionMap_var = tex2D(_EmissionMap,TRANSFORM_TEX(i.uv0, _EmissionMap));
-                float3 emissive = (_EmissionMap_var.rgb*_Emission);
+                float3 emissive = ((_EmissionColor.rgb*_EmissionMap_var.rgb)*_Emission);
                 float2 node_4737 = float2(saturate(dot(normalDirection,_StaticToonLight.rgb)),0.2);
                 float4 node_6405 = tex2D(_Ramp,TRANSFORM_TEX(node_4737, _Ramp));
                 float node_9074 = 3.0;
@@ -232,6 +234,7 @@ Shader "Phunky/phunky-toon-shader-dissolve" {
             uniform sampler2D _Ramp; uniform float4 _Ramp_ST;
             uniform sampler2D _DissolveTexture; uniform float4 _DissolveTexture_ST;
             uniform float _DissolveAmount;
+            uniform float4 _EmissionColor;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -364,6 +367,7 @@ Shader "Phunky/phunky-toon-shader-dissolve" {
             #pragma target 3.0
             uniform sampler2D _EmissionMap; uniform float4 _EmissionMap_ST;
             uniform float _Emission;
+            uniform float4 _EmissionColor;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float2 texcoord0 : TEXCOORD0;
@@ -387,7 +391,7 @@ Shader "Phunky/phunky-toon-shader-dissolve" {
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
 
                 float4 _EmissionMap_var = tex2D(_EmissionMap,TRANSFORM_TEX(i.uv0, _EmissionMap));
-                o.Emission = (_EmissionMap_var.rgb*_Emission);
+                o.Emission = ((_EmissionColor.rgb*_EmissionMap_var.rgb)*_Emission);
 
                 float3 diffColor = float3(0,0,0);
                 o.Albedo = diffColor;
