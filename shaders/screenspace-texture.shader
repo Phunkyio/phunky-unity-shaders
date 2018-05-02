@@ -7,7 +7,7 @@ Shader "Phunky/screenspace-texture-unlit"
 	}
 		Category
 	{
-		Cull back
+		Cull Off
 		Blend SrcAlpha OneMinusSrcAlpha
 		Tags{ Queue = Transparent }
 	SubShader
