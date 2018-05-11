@@ -1,6 +1,6 @@
 Shader "Custom/stencil-mask-1-zlequal" {
     Properties {
-        _node_2108 ("node_2108", Range(0, 1)) = 0
+        _Opacity ("Opacity", Range(0, 1)) = 0
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
     SubShader {
