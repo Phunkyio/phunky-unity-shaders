@@ -1,4 +1,5 @@
 Shader "Custom/stencil-mask-1-zlequal" {
+//useful for adjusting overlay shaders using zgreater to exist in zlequal space
     Properties {
         _Opacity ("Opacity", Range(0, 1)) = 0
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5

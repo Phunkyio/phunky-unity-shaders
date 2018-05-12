@@ -1,4 +1,5 @@
 Shader "Phunky/flat-lit-toon-stencil-1"
+//uses cubedparadox's cginc
 {
 	Properties
 	{
