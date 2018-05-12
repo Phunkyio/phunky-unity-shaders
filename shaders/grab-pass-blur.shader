@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Phunky/GrabPassBlur"
+Shader "Phunky/grab-pass-blur"
 {
 	Properties
 	{

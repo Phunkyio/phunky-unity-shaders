@@ -1,4 +1,4 @@
-Shader "phunky/Fire"
+Shader "Phunky/Fire"
 {
 	Properties
 	{

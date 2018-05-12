@@ -1,4 +1,4 @@
-Shader "Phunky/phunky-toon-shader-dissolve-depth-always" {
+Shader "Phunky/phunky-toon-shader-zalways" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Main texture (RGB)", 2D) = "white" {}

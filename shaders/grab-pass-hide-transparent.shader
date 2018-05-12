@@ -1,4 +1,4 @@
-﻿Shader "Phunky/grab-pass-hide-name"
+﻿Shader "Phunky/grab-pass-hide-transparent"
 {
     SubShader
     {
