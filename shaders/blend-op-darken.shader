@@ -8,11 +8,11 @@ Shader "Phunky/BlendOpDarken"
 	}
 
 		SubShader {
-		ZTest Off
-		Cull Off
-		Tags {
-		"Queue" = "Overlay"
-		"RenderType" = "Overlay"
+			ZTest Off
+			Cull Off
+			Tags {
+			"Queue" = "Overlay"
+			"RenderType" = "Overlay"
 		}
 
 		BlendOp Min

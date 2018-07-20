@@ -53,7 +53,7 @@ Shader "Phunky/Fire" {
 	    float _Offset,   _ScrollX, _ScrollY;
 	    float _Height, _Edge, _Distort, _Hard;
 
-			v2f vert(appdata v) {
+		v2f vert(appdata v) {
 	        v2f o;
 	        o.vertex = UnityObjectToClipPos(v.vertex);
 	        o.uv = TRANSFORM_TEX(v.uv, _NoiseTex); // -enable scaling and offset
@@ -63,32 +63,30 @@ Shader "Phunky/Fire" {
 	        return o;
 	    }
 
-    fixed4 frag(v2f i) : SV_Target {
-        float4 gradientMain = lerp(_ColorB, _ColorA, (i.uv3.y + _Offset)); // gradient for color
-        float4 gradientTint = lerp(_TintB, _TintA, (i.uv3.y + _Offset)); // gradient for color
-        float4 gradientBlend = lerp(float4(2,2,2,2), float4(0, 0, 0, 0), (i.uv3.y + _Height)); // gradient to fade to top
-        fixed4 uvdistort = tex2D(_DistortTex, i.uv3) * _Distort; // distort texture times distort amount
-        fixed4 noise = tex2D(_NoiseTex,fixed2((i.uv.x + _Time.x* _ScrollX) + uvdistort.g  ,(i.uv.y + _Time.x* _ScrollY) + uvdistort.r)); //noise texture with distortion
-        fixed4 shapetex = tex2D(_ShapeTex, i.uv2); // mask texture
+    	fixed4 frag(v2f i) : SV_Target {
+			float4 gradientMain = lerp(_ColorB, _ColorA, (i.uv3.y + _Offset)); // gradient for color
+			float4 gradientTint = lerp(_TintB, _TintA, (i.uv3.y + _Offset)); // gradient for color
+			float4 gradientBlend = lerp(float4(2,2,2,2), float4(0, 0, 0, 0), (i.uv3.y + _Height)); // gradient to fade to top
+			fixed4 uvdistort = tex2D(_DistortTex, i.uv3) * _Distort; // distort texture times distort amount
+			fixed4 noise = tex2D(_NoiseTex,fixed2((i.uv.x + _Time.x* _ScrollX) + uvdistort.g  ,(i.uv.y + _Time.x* _ScrollY) + uvdistort.r)); //noise texture with distortion
+			fixed4 shapetex = tex2D(_ShapeTex, i.uv2); // mask texture
 
 
-				#ifdef SHAPE_ON
-        noise = 1 - (noise * _Height + (1 - (shapetex * _Hard)));// use the shape mask
-				#else
-        noise += gradientBlend;// fade the flame at the top
-				#endif
-				#ifdef SHAPEX_ON
-        noise += gradientBlend;// fade the flame at the top over mask
-				#endif
-        float4 flame = saturate(noise.a * _Hard); //noise flame
-        float4 flamecolored =flame *gradientMain; // coloured noise flame
-        float4 flamerim = saturate((noise.a + _Edge) * _Hard) - flame; // noise flame edge
+					#ifdef SHAPE_ON
+			noise = 1 - (noise * _Height + (1 - (shapetex * _Hard)));// use the shape mask
+					#else
+			noise += gradientBlend;// fade the flame at the top
+					#endif
+					#ifdef SHAPEX_ON
+			noise += gradientBlend;// fade the flame at the top over mask
+					#endif
+			float4 flame = saturate(noise.a * _Hard); //noise flame
+			float4 flamecolored =flame *gradientMain; // coloured noise flame
+			float4 flamerim = saturate((noise.a + _Edge) * _Hard) - flame; // noise flame edge
 
-        float4 flamecolored2 = flamerim * gradientTint; // coloured flame edge
-        float4 finalcolor = flamecolored + flamecolored2; // combined edge and flames
-        return finalcolor;
-
-
+			float4 flamecolored2 = flamerim * gradientTint; // coloured flame edge
+			float4 finalcolor = flamecolored + flamecolored2; // combined edge and flames
+			return finalcolor;
     	}
       ENDCG
   	}

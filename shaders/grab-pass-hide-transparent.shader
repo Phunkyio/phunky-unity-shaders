@@ -1,26 +1,21 @@
-﻿Shader "Phunky/grab-pass-hide-transparent"
-{
-    SubShader
-    {
+Shader "Phunky/grab-pass-hide-transparent" {
+    SubShader {
         // Draw ourselves after all opaque geometry
         Tags { "Queue" = "Transparent-1" }
 
         // Grab the screen behind the object into _BackgroundTexture
-        GrabPass
-        {
+        GrabPass {
             "_BackgroundTexture"
         }
 
         // Render the object with the texture generated above, and invert the colors
-        Pass
-        {
+        Pass {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             #include "UnityCG.cginc"
 
-            struct v2f
-            {
+            struct v2f {
                 float4 grabPos : TEXCOORD0;
                 float4 pos : SV_POSITION;
             };
@@ -38,13 +33,11 @@
 
             sampler2D _BackgroundTexture;
 
-            half4 frag(v2f i) : SV_Target
-            {
+            half4 frag(v2f i) : SV_Target {
                 half4 bgcolor = tex2Dproj(_BackgroundTexture, i.grabPos);
                 return bgcolor;
             }
             ENDCG
         }
-
     }
 }

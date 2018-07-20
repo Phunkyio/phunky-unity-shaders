@@ -33,7 +33,6 @@ Shader "Phunky/echolocation" {
 
             fixed4 frag(v2f i) : COLOR {
                 float dist = distance(_Center, i.worldPos);
-
                 float val = 1 - step(dist, _Radius - 0.1) * 0.5;
                 val = step(_Radius - 1.5, dist) * step(dist, _Radius) * val;
                 return fixed4(val * _Color.r, val * _Color.g,val * _Color.b, 1.0);
