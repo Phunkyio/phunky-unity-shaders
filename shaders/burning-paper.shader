@@ -1,3 +1,5 @@
+//converted from shaderslab.com
+
 Shader "Phunky/burning-paper"
 {
     Properties {
@@ -9,7 +11,6 @@ Shader "Phunky/burning-paper"
     SubShader {
 
         Tags { "Queue"="Geometry" }
-
         Pass {
 
             CGPROGRAM
@@ -47,11 +48,8 @@ Shader "Phunky/burning-paper"
                 bool b = val < _Threshold;
                 return lerp(c, c * fixed4(lerp(1, 0, 1 - saturate(abs(_Threshold - val) / 0.04)), 0, 0, 1), b);
             }
-
             ENDCG
-
         }
-
     }
     FallBack "Diffuse"
 }

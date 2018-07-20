@@ -1,3 +1,5 @@
+// converted from shaderslab.com
+
 Shader "Phunky/echolocation" {
     Properties {
         _Color ("Color", Color) = (1, 1, 1, 1)
