@@ -1,5 +1,8 @@
 Shader "Phunky/phunky-basic-wip"{
     Properties{
+
+        [Enum(UnityEngine.Rednering.CullMode)] _CullMode ("Cull", Int) = 0
+
         _MainTex("Main Texture", 2D) = "white"{}
         _Color("Color", color) = (1,1,1,1)
         _BumpMap("Normal Map", 2D) = "bump"{}
@@ -14,7 +17,8 @@ Shader "Phunky/phunky-basic-wip"{
             "Queue" = "Opaque"
             "RenderType" = "Transparent"
             }
-
+        
+        Cull _CullMode
         Blend [_BlendModeSourceColor] [_BlendModeDestinationColor], [_BlendModeSourceAlpha] [_BlendModeDestinationAlpha]
 
         Pass{
