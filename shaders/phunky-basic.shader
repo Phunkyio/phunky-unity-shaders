@@ -3,12 +3,20 @@ Shader "Phunky/phunky-basic-wip"{
         _MainTex("Main Texture", 2D) = "white"{}
         _Color("Color", color) = (1,1,1,1)
         _BumpMap("Normal Map", 2D) = "bump"{}
+
+        [Enum(UnityEngine.Rendering.BlendMode)] _BlendModeSourceColor ("Source Color BlendMode", Int) = 1
+        [Enum(UnityEngine.Rendering.BlendMode)] _BlendModeDestinationColor ("Destination Color BlendMode", Int) = 0
+		[Enum(UnityEngine.Rendering.BlendMode)] _BlendModeSourceAlpha ("Source Alpha BlendMode", Int) = 1
+
     }
     SubShader{
         Tags {
             "Queue" = "Opaque"
             "RenderType" = "Transparent"
             }
+
+        Blend [_BlendModeSourceColor] [_BlendModeDestinationColor], [_BlendModeSourceAlpha] [_BlendModeDestinationAlpha]
+
         Pass{
             CGPROGRAM
                 // #pragma surface surf Lambert
