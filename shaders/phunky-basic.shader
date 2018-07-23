@@ -11,6 +11,7 @@ Shader "Phunky/phunky-basic-wip"{
         [Enum(UnityEngine.Rendering.BlendMode)] _BlendModeDestinationColor ("Destination Color BlendMode", Int) = 0
 		[Enum(UnityEngine.Rendering.BlendMode)] _BlendModeSourceAlpha ("Source Alpha BlendMode", Int) = 1
         [Enum(Less, 0, Greater, 1, LEqual, 2, GEqual, 3, Equal, 4, NotEqual, 5, Always, 6)] _ZTestMode ("ZTest", Int) = 2
+        [Enum(On, 0, Off, 1)] _ZWriteMode("ZWrite", Int) = 0
 
     }
     SubShader{
@@ -21,6 +22,7 @@ Shader "Phunky/phunky-basic-wip"{
         
         Cull [_CullMode]
         ZTest [_ZTestMode]
+        ZWrite [_ZWriteMode]
         Blend [_BlendModeSourceColor] [_BlendModeDestinationColor], [_BlendModeSourceAlpha] [_BlendModeDestinationAlpha]
 
         Pass{
