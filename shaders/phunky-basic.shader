@@ -1,7 +1,7 @@
 Shader "Phunky/phunky-basic-wip"{
     Properties{
 
-        [Enum(Back, 0, Front, 1, Off, 2)] _CullMode ("Cull", Int) = 0
+        [Enum(Off, 0, Front, 1, Back, 2)] _CullMode ("Cull", Int) = 0
 
         _MainTex("Main Texture", 2D) = "white"{}
         _Color("Color", color) = (1,1,1,1)
