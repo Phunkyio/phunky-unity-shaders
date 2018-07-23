@@ -1,7 +1,7 @@
 Shader "Phunky/phunky-basic-wip"{
     Properties{
 
-        [Enum(UnityEngine.Rednering.CullMode)] _CullMode ("Cull", Int) = 0
+        [Enum(Back, 0, Front, 1, Off, 2)] _CullMode ("Cull", Int) = 0
 
         _MainTex("Main Texture", 2D) = "white"{}
         _Color("Color", color) = (1,1,1,1)
@@ -10,6 +10,7 @@ Shader "Phunky/phunky-basic-wip"{
         [Enum(UnityEngine.Rendering.BlendMode)] _BlendModeSourceColor ("Source Color BlendMode", Int) = 1
         [Enum(UnityEngine.Rendering.BlendMode)] _BlendModeDestinationColor ("Destination Color BlendMode", Int) = 0
 		[Enum(UnityEngine.Rendering.BlendMode)] _BlendModeSourceAlpha ("Source Alpha BlendMode", Int) = 1
+        [Enum(Less, 0, Greater, 1, LEqual, 2, GEqual, 3, Equal, 4, NotEqual, 5, Always, 6)] _ZTestMode ("ZTest", Int) = 2
 
     }
     SubShader{
@@ -18,7 +19,8 @@ Shader "Phunky/phunky-basic-wip"{
             "RenderType" = "Transparent"
             }
         
-        Cull _CullMode
+        Cull [_CullMode]
+        ZTest [_ZTestMode]
         Blend [_BlendModeSourceColor] [_BlendModeDestinationColor], [_BlendModeSourceAlpha] [_BlendModeDestinationAlpha]
 
         Pass{
