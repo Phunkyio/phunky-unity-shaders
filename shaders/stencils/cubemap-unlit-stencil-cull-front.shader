@@ -6,6 +6,8 @@ Shader "Phunky/cubemap-unlit-stencil-cull-front" {
         _MainTex ("Main texture (RGB)", 2D) = "white" {}
         _CrossfadeOverlay ("Crossfade Overlay", Range(0, 2)) = 1
         _Cubemap ("Cubemap", Cube) = "_Skybox" {}
+        [Enum(Off, 0, On, 1)] _ZWrite ("ZWrite", Int) = 1
+        [Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5)] _ZTestMode("ZTest", Int) = 2
     }
     SubShader {
 		Stencil{
@@ -23,6 +25,8 @@ Shader "Phunky/cubemap-unlit-stencil-cull-front" {
                 "LightMode"="ForwardBase"
             }
             Cull Front
+            ZWrite [_ZWrite]
+            ZTest [_ZTestMode]
 
 
             CGPROGRAM
