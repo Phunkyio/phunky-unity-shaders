@@ -1,19 +1,25 @@
 //this shader is being used to change the environment behind a stencil mask
 
-Shader "Phunky/cubemap-unlit-stencil-cull-front" {
+Shader "Phunky/cubemap-unlit-stencil" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Main texture (RGB)", 2D) = "white" {}
         _CrossfadeOverlay ("Crossfade Overlay", Range(0, 2)) = 1
         _Cubemap ("Cubemap", Cube) = "_Skybox" {}
+
+        _StencilRef ("Stencil Ref", Int) = 0
+        [Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5)] _StencilComp ("Stencil Comp", Int) = 0
+        [Enum(Keep, 0, Replace, 1)] _StencilPass("Stencil Pass", Int) = 0
+
+        [Enum(Off, 0, Front, 1, Back, 2)] _CullMode("Cull", Int) = 0
         [Enum(Off, 0, On, 1)] _ZWrite ("ZWrite", Int) = 1
         [Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5)] _ZTestMode("ZTest", Int) = 2
     }
     SubShader {
 		Stencil{
-		Ref 1
-		Comp Equal
-		Pass Keep
+		Ref [_StencilRef]
+		Comp [_StencilComp]
+		Pass [_StencilPass]
 		Fail Keep
 	}
         Tags {
@@ -24,7 +30,7 @@ Shader "Phunky/cubemap-unlit-stencil-cull-front" {
             Tags {
                 "LightMode"="ForwardBase"
             }
-            Cull Front
+            Cull [_CullMode]
             ZWrite [_ZWrite]
             ZTest [_ZTestMode]
 
