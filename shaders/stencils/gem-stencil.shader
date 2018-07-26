@@ -3,13 +3,17 @@
 
 //modification of the free "Gem Shader" asset from the asset store.
 
-Shader "Phunky/stencil/Gem-stencil-1"
+Shader "Phunky/stencil/Gem-stencil"
 {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_ReflectionStrength ("Reflection Strength", Range(0.0,2.0)) = 1.0
 		_EnvironmentLight ("Environment Light", Range(0.0,2.0)) = 1.0
 		_Emission ("Emission", Range(0.0,2.0)) = 0.0
+		_StencilRef("Stencil Ref", Int) = 0
+		[Enum(Always, 0, Equal, 1)] _StencilComp ("Stencil Comp", Int) = 0
+		[Enum(Keep, 0, Replace, 1)] _StencilPass ("Stencil Pass", Int) = 0
+
 		[NoScaleOffset] _RefractTex ("Refraction Texture", Cube) = "" {}
 	}
 	SubShader {
@@ -18,9 +22,9 @@ Shader "Phunky/stencil/Gem-stencil-1"
 		}
 
 		Stencil {
-			Ref 1
-			Comp always
-			Pass keep
+			Ref [_StencilRef]
+			Comp [_StencilComp]
+			Pass [_StencilPass]
 		}
 
 		// First pass - here we render the backfaces of the diamonds. Since those diamonds are more-or-less
