@@ -10,6 +10,8 @@ Shader "Phunky/cubemap-unlit-stencil" {
         _StencilRef ("Stencil Ref", Int) = 0
         [Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5)] _StencilComp ("Stencil Comp", Int) = 0
         [Enum(Keep, 0, Replace, 1)] _StencilPass("Stencil Pass", Int) = 0
+        [Enum(Keep, 0, Replace, 1)] _StencilFail("Stencil Fail", Int) = 0
+        [Enum(Keep, 0, Replace, 1)] _StencilZFail("Stencil ZFail", Int) = 0
 
         [Enum(Off, 0, Front, 1, Back, 2)] _CullMode("Cull", Int) = 0
         [Enum(Off, 0, On, 1)] _ZWrite ("ZWrite", Int) = 1
@@ -20,7 +22,8 @@ Shader "Phunky/cubemap-unlit-stencil" {
 		Ref [_StencilRef]
 		Comp [_StencilComp]
 		Pass [_StencilPass]
-		Fail Keep
+		Fail [_StencilFail]
+    ZFail [_StencilZFail]
 	}
         Tags {
             "RenderType"="Opaque"
