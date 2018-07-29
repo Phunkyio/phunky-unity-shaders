@@ -18,13 +18,13 @@ Shader "Phunky/cubemap-unlit-stencil" {
         [Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5)] _ZTestMode("ZTest", Int) = 2
     }
     SubShader {
-		Stencil{
-		Ref [_StencilRef]
-		Comp [_StencilComp]
-		Pass [_StencilPass]
-		Fail [_StencilFail]
-    ZFail [_StencilZFail]
-	}
+  		Stencil{
+    		Ref [_StencilRef]
+    		Comp [_StencilComp]
+    		Pass [_StencilPass]
+    		Fail [_StencilFail]
+        ZFail [_StencilZFail]
+  	  }
         Tags {
             "RenderType"="Opaque"
         }
