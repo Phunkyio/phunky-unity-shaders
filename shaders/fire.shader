@@ -1,4 +1,4 @@
-Shader "Phunky/Fire" {
+Shader "Phunky/fire" {
 	Properties {
 		_ColorA("Main Color A", Color) = (1,1,1) //gradient colors
 		_ColorB("Main Color B", Color) = (1,1,1)
