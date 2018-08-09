@@ -4,8 +4,8 @@ Shader "Phunky/burning-paper"
 {
     Properties {
         _MainTex ("Main texture", 2D) = "white" {}
-        _DissolveTex ("Dissolution texture", 2D) = "gray" {}
-        _Threshold ("Threshold", Range(0, 1.1)) = 0
+        _DissolveTex ("Dissolve Texture", 2D) = "gray" {}
+        _Threshold ("Threshold", Range(-0.1, 1.1)) = 0
     }
 
     SubShader {
