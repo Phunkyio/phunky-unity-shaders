@@ -4,14 +4,15 @@ Shader "Phunky/grab-pass-blur" {
 	Properties {
 		_Factor("Factor", Range(0, 5)) = 1.0
 		[Enum(Off, 0, Front, 1, Back, 2)] _CullMode ("Culling Mode", Int) = 0
+		[Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5, NotEqual)] _ZTestMode ("ZTest Mode", Int) = 0
 	}
 		SubShader {
 		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
 
 		GrabPass{}
 
-		ZTest Always
-		Cull Off
+		ZTest [_ZTestMode]
+		Cull [_CullMode]
 
 		Pass {
 			CGPROGRAM
