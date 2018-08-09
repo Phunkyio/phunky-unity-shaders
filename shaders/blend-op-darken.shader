@@ -1,20 +1,22 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Phunky/BlendOpDarken"
+Shader "Phunky/blend-op-darken"
 {
 	Properties {
 		_MainTex("Sprite Texture", 2D) = "white" {}
 		_Color("Tint", Color) = (1,1,1,1)
+		[Enum(Off, 0, Front, 1, Back, 2)] _CullMode ("Cull Mode", Int) = 1
 	}
 
 		SubShader {
-			ZTest Off
-			Cull Off
-			Tags {
+
+		Tags {
 			"Queue" = "Overlay"
 			"RenderType" = "Overlay"
 		}
-
+		
+		ZTest Off
+		Cull [_CullMode]
 		BlendOp Min
 		Blend One One
 
