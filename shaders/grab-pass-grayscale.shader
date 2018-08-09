@@ -13,7 +13,7 @@ Shader "Phunky/grab-pass-grayscale" {
 		Pass{
 			//ZTest Off - always display on screen
 			//Culling Off - effect visible from the inside
-			ZTest Off
+			ZTest ALways
 			Cull Off
 
 			CGPROGRAM
