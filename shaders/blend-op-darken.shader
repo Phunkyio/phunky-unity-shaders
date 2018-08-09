@@ -15,7 +15,7 @@ Shader "Phunky/blend-op-darken"
 			"RenderType" = "Overlay"
 		}
 		
-		ZTest Off
+		ZTest Always
 		Cull [_CullMode]
 		BlendOp Min
 		Blend One One
