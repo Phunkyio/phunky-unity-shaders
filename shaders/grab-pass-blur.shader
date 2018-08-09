@@ -3,6 +3,7 @@
 Shader "Phunky/grab-pass-blur" {
 	Properties {
 		_Factor("Factor", Range(0, 5)) = 1.0
+		[Enum(Off, 0, Front, 1, Back, 2)] _CullMode ("Culling Mode", Int) = 0
 	}
 		SubShader {
 		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
