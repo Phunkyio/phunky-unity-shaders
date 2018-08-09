@@ -5,7 +5,7 @@ Shader "Phunky/grab-pass-blur" {
 		_Factor("Factor", Range(0, 5)) = 1.0
 	}
 		SubShader {
-			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
 
 		GrabPass{}
 
