@@ -23,6 +23,11 @@ Shader "Phunky/phunky-toon-shader" {
         _DissolveTexture ("Dissolve Texture", 2D) = "white" {}
         _DissolveAmount ("Dissolve Amount", Range(0, 1)) = 0
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
+        _StencilRef ("Stencil Ref", Float) = 1
+        [Enum(UnityEngine.Rendering.CompareFunction)] _StencilComp ("Stencil Comparison", Float) = 6
+        [Enum(UnityEngine.Rendering.StencilOp)] _StencilOp ("Stencil Operation", Float) = 0 
+        [Enum(UnityEngine.Rendering.StencilOp)] _StencilFail ("Stencil Fail", Float) = 0 
+        [Enum(UnityEngine.Rendering.StencilOp)] _StencilZFail ("Stencil ZFail", Float) = 0
     }
     SubShader {
         Tags {
@@ -31,9 +36,11 @@ Shader "Phunky/phunky-toon-shader" {
         }
         Stencil
     		{
-    			Ref 1
-    			Comp always
-    			Pass replace
+    			Ref [_StencilRef]
+    			Comp [_StencilComp]
+    			Pass [_StencilOp]
+                Fail [_StencilFail]
+                ZFail [_StencilZFail]
     		}
         Pass {
             Name "Outline"
