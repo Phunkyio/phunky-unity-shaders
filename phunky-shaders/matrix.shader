@@ -3,18 +3,28 @@ Shader "Phunky/matrix"
 {
     Properties
     {
-        _Grid ("Grid", range(1, 50.)) = 30.
-        _SpeedMax ("Speed Max", range(0, 30.)) = 20.
-        _SpeedMin ("Speed Min", range(0, 10.)) = 2.
-        _Density ("Density", range(0, 30.)) = 5.
+        _Grid ("Grid", range(1, 50)) = 30
+        _SpeedMax ("Speed Max", range(0, 30)) = 20
+        _SpeedMin ("Speed Min", range(0, 10)) = 2
+        _Density ("Density", range(0, 30)) = 5
+
+        //Combine with matrix-reverse
+        [Enum(UnityEngine.Rendering.CullMode)] _CullMode("Cull Mode", Int) = 1
+        [Enum(0, On, 1, Off)] _ZWriteMode("ZWrite Modem", Int) = 1
+        [Enum(0, Less, 1, Greater, 2, LEqual, 3, GEqual, 4, Equal, 5, NotEqual, 6, Always, 7)] _ZTestMode("ZTest Mode", Int) = 1
     }
 
     SubShader
     {
         Tags { "RenderType"="Opaque" }
 
+        Cull [_CullMode]
+        ZWrite [_ZWriteMode]
+        ZTest [_ZTestMode]
+
         Pass
         {
+
             CGPROGRAM
             #pragma vertex vert_img
             #pragma fragment frag
