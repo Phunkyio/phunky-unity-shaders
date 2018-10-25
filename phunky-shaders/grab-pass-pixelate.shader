@@ -2,16 +2,18 @@
 Shader "Phunky/grab-pass-pixelate" {
 	Properties {
 		_PixelSize("Pixel Size", Float) = 10
+		[Enum(UnityEngine.Rendering.CullMode)] _CullMode ("Cull Mode", Int) = 1
+		[Enum(Off, 0, On, 1)] _ZWriteMode ("ZWrite Mode", Int) = 1
+		[Enum(Less, 0, Greater, 1, LEqual, 2, GEqual, 3, Equal, 4, NotEqual, 5, Always, 6)] _ZTestMode ("ZTest Mode", Int) = 2
 	}
 	SubShader {
 		Tags{ "Queue" = "Overlay" "IgnoreProjector" = "True" }
 		Blend Off
 		Lighting Off
 		Fog{ Mode Off }
-		ZWrite Off
-		LOD 200
-		Cull Off
-		ZTest Off
+		Cull [_CullMode]
+		ZWrite [_ZWriteMode]
+		ZTest [_ZTestMode]
 
 		GrabPass{ "_GrabTexture" }
 
