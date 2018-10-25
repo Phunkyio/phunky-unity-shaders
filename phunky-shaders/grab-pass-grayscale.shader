@@ -11,8 +11,6 @@ Shader "Phunky/grab-pass-grayscale" {
 		GrabPass{ "_GrabTexture" }
 
 		Pass{
-			//ZTest Off - always display on screen
-			//Culling Off - effect visible from the inside
 			ZTest ALways
 			Cull Off
 
