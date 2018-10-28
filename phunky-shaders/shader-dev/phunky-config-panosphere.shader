@@ -16,6 +16,10 @@ Shader "Phunky/config-panosphere" {
             "RenderType"="Opaque"
         }
 
+        Cull [_CullMode]
+        ZWrite [_ZWriteMode]
+        ZTest [_ZTestMode]
+
         Pass {
             Name "FORWARD"
             Tags {
