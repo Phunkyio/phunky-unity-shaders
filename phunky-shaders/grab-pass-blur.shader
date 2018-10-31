@@ -3,7 +3,8 @@
 Shader "Phunky/grab-pass-blur" {
 	Properties {
 		_Factor("Factor", Range(0, 5)) = 1.0
-		[Enum(Off, 0, Front, 1, Back, 2)] _CullMode ("Culling Mode", Int) = 0
+		[Enum(UnityEngine.Rendering.CullMode)] _CullMode ("Cull", Int) = 0
+		[Enum(Off, 0 , On, 1)] _ZwriteMode ("ZWrite", Int) = 1
 		[Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5, NotEqual)] _ZTestMode ("ZTest Mode", Int) = 0
 	}
 		SubShader {
@@ -12,6 +13,7 @@ Shader "Phunky/grab-pass-blur" {
 		GrabPass{}
 
 		ZTest [_ZTestMode]
+		ZWrite [_ZWriteMode]
 		Cull [_CullMode]
 
 		Pass {
