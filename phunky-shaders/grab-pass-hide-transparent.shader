@@ -1,8 +1,16 @@
 Shader "Phunky/grab-pass-hide-transparent" {
+    Properties {
+        [Enum(UnityEngine.Rendering.CullMode)] _CullMode("Cull", Int) = 0
+        [Enum(Off, 0, On, 1)] _ZWriteMode("ZWrite", Int) = 1
+        [Enum(Less, 0, LEqual, 1, Equal, 2, GEqual, 3, Greater, 4, NotEqual, 5, Always, 6)] _ZTestMode("ZTest", Int) = 1
+    }
     SubShader {
         // Draw ourselves after all opaque geometry
         Tags { "Queue" = "Transparent-1" }
-
+        Cull [_CullMode]
+        ZWrite [_ZWriteMode]
+        ZTest [_ZTestMode]
+        
         // Grab the screen behind the object into _BackgroundTexture
         GrabPass {
             "_BackgroundTexture"
