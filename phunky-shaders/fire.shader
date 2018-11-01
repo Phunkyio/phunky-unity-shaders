@@ -4,10 +4,10 @@ Shader "Phunky/fire" {
 		_ColorB("Main Color B", Color) = (1,1,1)
 		_TintA("Edge Color A", Color) = (1,1,1)
 		_TintB("Edge Color B", Color) = (1,1,1)
-		_ScrollX(" Scroll Noise X", Range(-10,10)) = 1 // noise animation
-		_ScrollY(" Scroll Noise Y", Range(-10,10)) = 1
+		_ScrollX("Scroll Noise X", Range(-10,10)) = 1 // noise animation
+		_ScrollY("Scroll Noise Y", Range(-10,10)) = 1
 		_NoiseTex("Noise Texture", 2D) = "white" {}
-		_DistortTex(" UVDistort Texture", 2D) = "white" {}
+		_DistortTex("UVDistort Texture", 2D) = "white" {}
 		_Offset("Offset Gradient A/B", Range(-2,2)) = 1
 		_Hard("Hard Cutoff", Range(1,40)) = 30
 		_Height("Height", Range(-4,10)) = 1
