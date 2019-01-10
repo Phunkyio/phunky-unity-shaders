@@ -1,5 +1,6 @@
 ﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+// Derivative of https://www.youtube.com/watch?v=C6lGEgcHbWc
 
 Shader "Phunky/Barrier"
 {
@@ -67,8 +68,9 @@ Shader "Phunky/Barrier"
 
 				return o;
 			}
-			
-			sampler2D _CameraDepthNormalsTexture;
+
+			UNITY_DECLARE_DEPTH_TEXTURE(_CameraDepthTexture);
+			//sampler2D _CameraDepthTexture;
 			fixed4 _Color;
 
 			float triWave(float t, float offset, float yOffset)
@@ -87,7 +89,8 @@ Shader "Phunky/Barrier"
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float screenDepth = DecodeFloatRG(tex2D(_CameraDepthNormalsTexture, i.screenuv).zw);
+				float screenDepth = DecodeFloatRG(tex2D(_CameraDepthTexture, i.screenuv).zw);
+				// float screenDepth = LinearEyeDepth (SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(i.projPos)));
 				float diff = screenDepth - i.depth;
 				float intersect = 0;
 				
