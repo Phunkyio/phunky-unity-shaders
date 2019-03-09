@@ -10,6 +10,7 @@ Shader "Phunky/grab-pass-hide-transparent" {
         Cull [_CullMode]
         ZWrite [_ZWriteMode]
         ZTest [_ZTestMode]
+        
         // Grab the screen behind the object into _BackgroundTexture
         GrabPass {
             "_BackgroundTexture"
