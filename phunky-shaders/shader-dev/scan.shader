@@ -1,6 +1,6 @@
 ﻿//What was I doing here?
 
-Shader "Phunky/Dev/Scan"
+Shader ".Phunky/Dev/Scan"
 {
 	Properties
 	{
