@@ -1,6 +1,6 @@
 
 
-Shader "Phunky/Rainbow-wip" {
+Shader ".Phunky/Rainbow-wip" {
 	Properties{
 		_Saturation("Saturation", Range(0.0, 1.0)) = 0.8
 		_Luminosity("Luminosity", Range(0.0, 1.0)) = 0.5

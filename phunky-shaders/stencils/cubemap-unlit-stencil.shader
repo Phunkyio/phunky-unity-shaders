@@ -1,6 +1,6 @@
 //this shader is being used to change the environment behind a stencil mask
 
-Shader "Phunky/Cubemap Unlit w Stencil" {
+Shader ".Phunky/Cubemap Unlit w Stencil" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Main texture (RGB)", 2D) = "white" {}
