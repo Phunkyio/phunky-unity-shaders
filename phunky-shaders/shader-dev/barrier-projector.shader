@@ -3,7 +3,7 @@
 // Derivative of https://www.youtube.com/watch?v=C6lGEgcHbWc
 // added Cascading Speed property
 
-Shader "Phunky/Dev/Barrier"
+Shader ".Phunky/Dev/Barrier"
 {
 	Properties
 	{

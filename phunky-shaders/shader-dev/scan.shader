@@ -1,4 +1,6 @@
-﻿Shader "Phunky/Dev/Scan"
+﻿//What was I doing here?
+
+Shader "Phunky/Dev/Scan"
 {
 	Properties
 	{

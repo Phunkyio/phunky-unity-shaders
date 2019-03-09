@@ -1,4 +1,4 @@
-Shader "Phunky/Stencil/cubed-phunky-flt-stencil-wip"
+Shader ".Phunky/Stencil/cubed-phunky-flt-stencil"
 {
     Properties
     {

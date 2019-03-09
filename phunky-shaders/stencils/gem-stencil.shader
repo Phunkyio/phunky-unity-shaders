@@ -3,7 +3,7 @@
 
 //modification of the free "Gem Shader" asset from the asset store.
 
-Shader "Phunky/stencil/Gem-stencil"
+Shader ".Phunky/Gem Stencil"
 {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
