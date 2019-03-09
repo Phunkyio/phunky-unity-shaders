@@ -1,4 +1,5 @@
-Shader "Phunky/phunky-toon-shader" {
+//TODO compare with stencil version
+Shader ".Phunky/Phunky Toon Shader" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Main texture (RGB)", 2D) = "white" {}
@@ -23,6 +24,9 @@ Shader "Phunky/phunky-toon-shader" {
         _DissolveTexture ("Dissolve Texture", 2D) = "white" {}
         _DissolveAmount ("Dissolve Amount", Range(0, 1)) = 0
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
+        [Enum(Off, 0, On, 1) _CullMode ("Cull", Int)] = 0
+        [Enum(Off, 0, On, 1) _ZWriteMode ("ZWrite", Int)] = 1
+        [Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5) _ZTestMode ("ZTest", Int) = 2]
     }
     SubShader {
         Tags {
@@ -195,7 +199,9 @@ Shader "Phunky/phunky-toon-shader" {
                 "LightMode"="ForwardAdd"
             }
             Blend One One
-            Cull Off
+            Cull [_CullMode]
+            Zwrite [_ZWriteMode]
+            ZTest [_ZTestMode]
 
 
             CGPROGRAM

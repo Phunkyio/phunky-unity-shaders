@@ -2,7 +2,7 @@
 
 //converted from shaderslab.com
 
-Shader "Phunky/burning-paper"
+Shader ".Phunky/burning-paper"
 {
     Properties {
         _MainTex ("Main texture", 2D) = "white" {}

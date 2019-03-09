@@ -1,4 +1,6 @@
-Shader "Phunky/phunky-toon-shader" {
+//Essentially Noe Noe w Dissolve and Stencil
+
+Shader ".Phunky/phunky-toon-shader" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Main texture (RGB)", 2D) = "white" {}

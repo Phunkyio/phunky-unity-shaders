@@ -1,5 +1,5 @@
 //converted from shadertoy
-Shader "Phunky/matrix"
+Shader ".Phunky/matrix"
 {
     Properties
     {

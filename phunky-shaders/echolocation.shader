@@ -2,7 +2,7 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 // converted from shaderslab.com
-Shader "Phunky/echolocation" {
+Shader ".Phunky/echolocation" {
     Properties {
         _Color ("Color", Color) = (1, 1, 1, 1)
         _Center ("CenterX", vector) = (0, 0, 0)

@@ -1,4 +1,4 @@
-Shader "Phunky/phunky-basic-wip"{
+Shader ".Phunky/phunky-basic-wip"{
     Properties{
 
         [Enum(Off, 0, Front, 1, Back, 2)] _CullMode ("Cull", Int) = 0

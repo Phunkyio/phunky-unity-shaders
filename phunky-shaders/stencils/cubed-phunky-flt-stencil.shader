@@ -1,4 +1,4 @@
-Shader ".Phunky/Stencil/cubed-phunky-flt-stencil"
+Shader ".Phunky/Cubed Paradox w Stencil"
 {
     Properties
     {

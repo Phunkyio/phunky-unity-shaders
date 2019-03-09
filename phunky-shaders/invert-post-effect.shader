@@ -1,4 +1,4 @@
-Shader "Phunky/invert-post-effect"
+Shader ".Phunky/invert-post-effect"
 {
     Properties
     {

@@ -1,5 +1,5 @@
 //This shader replicates the pixelate post processing image effect as a material shader that can be placed on meshes.
-Shader "Phunky/grab-pass-pixelate" {
+Shader ".Phunky/grab-pass-pixelate" {
 	Properties {
 		_PixelSize("Pixel Size", Float) = 10
 		[Enum(UnityEngine.Rendering.CullMode)] _CullMode ("Cull Mode", Int) = 1

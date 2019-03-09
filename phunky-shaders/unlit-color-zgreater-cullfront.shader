@@ -1,4 +1,6 @@
-Shader "Phunky/unlit-color-zgreater-cullfront" {
+//This shader had a very specific use, I'm can't remember what it was.
+
+Shader ".Phunky/unlit-color-zgreater-cullfront" {
     Properties {
         _Color ("Color", Color) = (0,0,0,1)
     }

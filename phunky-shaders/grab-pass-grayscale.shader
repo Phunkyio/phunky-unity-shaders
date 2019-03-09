@@ -1,6 +1,6 @@
 /* This shader replicates the grayscale image effect post processing shader that can be used on the camera in Unity as a material shader. */
 
-Shader "Phunky/grab-pass-grayscale" {
+Shader ".Phunky/grab-pass-grayscale" {
 	Properties {
 		_ZoomVal("Zoom value", Range(0, 20)) = 0
 	}

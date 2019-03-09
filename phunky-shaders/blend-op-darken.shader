@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Phunky/blend-op-darken"
+Shader ".Phunky/blend-op-darken"
 {
 	Properties {
 		_MainTex("Sprite Texture", 2D) = "white" {}

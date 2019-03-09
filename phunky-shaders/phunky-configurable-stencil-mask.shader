@@ -1,4 +1,4 @@
-Shader "Phunky/Stencil/Configurable Stencil Mask"
+Shader ".Phunky/Configurable Stencil Mask"
 {
 	Properties{
 		_Ref("Ref Value", Int) = 0

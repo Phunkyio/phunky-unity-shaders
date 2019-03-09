@@ -1,4 +1,4 @@
-Shader "Phunky/grab-pass-hide-transparent" {
+Shader ".Phunky/grab-pass-hide-transparent" {
     Properties {
         [Enum(UnityEngine.Rendering.CullMode)] _CullMode("Cull", Int) = 0
         [Enum(Off, 0, On, 1)] _ZWriteMode("ZWrite", Int) = 1
