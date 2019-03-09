@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Phunky/screenspace-texture-unlit"
 {
 	Properties
@@ -39,7 +41,7 @@ Shader "Phunky/screenspace-texture-unlit"
 
 			v2f vert(appdata v) {
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.screenPos = o.vertex.xyw;
 				o.screenPos.y *= _ProjectionParams.x;
 
