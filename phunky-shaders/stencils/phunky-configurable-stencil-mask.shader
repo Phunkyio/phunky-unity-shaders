@@ -1,6 +1,7 @@
 Shader "Phunky/Stencil/Configurable Stencil Mask"
 {
 	Properties{
+		_Ref("Ref Value", Int) = 0
 		[Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5, NotEqual, 6, Never, 7)] _CompFunction("Comparison Function", Int) = 0
 		[Enum(Keep, 0, Zero, 1, Replace, 2, IncrSat, 3, DecrSat, 4, Invert, 5, IncrWrap, 6, DecrWrap, 7)] _PassOp("Pass Operation") = 0
 		[Enum(Keep, 0, Zero, 1, Replace, 2, IncrSat, 3, DecrSat, 4, Invert, 5, IncrWrap, 6, DecrWrap, 7)] _FailOp("Fail Operation") = 0
@@ -19,7 +20,7 @@ Shader "Phunky/Stencil/Configurable Stencil Mask"
 
 		ColorMask 0
 		Stencil{
-			Ref 1
+			Ref [_Ref]
 			Comp [_CompFunction]
 			Pass [_PassOp]
 			Fail [_FailOp]
