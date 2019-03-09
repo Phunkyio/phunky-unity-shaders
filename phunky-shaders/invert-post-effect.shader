@@ -1,6 +1,6 @@
 Shader ".Phunky/invert-post-effect" {
     Properties {
-        _MainTex("Main Texture", 2 D) = "white" {}
+        _MainTex("Main Texture", 2D) = "white" {}
     }
     SubShader {
         Cull Off
