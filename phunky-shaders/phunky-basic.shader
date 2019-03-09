@@ -16,7 +16,7 @@ Shader ".Phunky/phunky-basic-wip"{
     }
     SubShader{
         Tags {
-            "Queue" = "Opaque"
+            "Queue" = "Geometry"
             "RenderType" = "Transparent"
             }
         
