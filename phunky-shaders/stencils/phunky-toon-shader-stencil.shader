@@ -1,4 +1,6 @@
-Shader "Phunky/phunky-toon-shader" {
+//Essentially Noe Noe w Dissolve and Stencil
+
+Shader ".Phunky/phunky-toon-shader" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Main texture (RGB)", 2D) = "white" {}
@@ -23,6 +25,8 @@ Shader "Phunky/phunky-toon-shader" {
         _DissolveTexture ("Dissolve Texture", 2D) = "white" {}
         _DissolveAmount ("Dissolve Amount", Range(0, 1)) = 0
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
+        [Enum(Off, 0, Front, 1, Back, 2)] _Cull("Cull", Int) = 0 
+        [Enum(Off, 0, On, 1)] _ZWrite("ZWrite", Int) = 1
         _StencilRef ("Stencil Ref", Float) = 1
         [Enum(UnityEngine.Rendering.CompareFunction)] _StencilComp ("Stencil Comparison", Float) = 6
         [Enum(UnityEngine.Rendering.StencilOp)] _StencilOp ("Stencil Operation", Float) = 0 
@@ -31,9 +35,12 @@ Shader "Phunky/phunky-toon-shader" {
     }
     SubShader {
         Tags {
-            "Queue"="AlphaTest"
-            "RenderType"="TransparentCutout"
+            "Queue"="Transparent+3"
+            "RenderType"="Opaque"
         }
+        ZWrite [_ZWrite]
+        Cull [_Cull]
+        
         Stencil
     		{
     			Ref [_StencilRef]
@@ -46,7 +53,7 @@ Shader "Phunky/phunky-toon-shader" {
             Name "Outline"
             Tags {
             }
-            Cull Front
+
 
             CGPROGRAM
             #pragma vertex vert
@@ -96,7 +103,7 @@ Shader "Phunky/phunky-toon-shader" {
             Tags {
                 "LightMode"="ForwardBase"
             }
-            Cull Off
+            Cull [_Cull]
 
 
             CGPROGRAM
@@ -208,7 +215,7 @@ Shader "Phunky/phunky-toon-shader" {
                 "LightMode"="ForwardAdd"
             }
             Blend One One
-            Cull Off
+            Cull [_Cull]
 
 
             CGPROGRAM
@@ -317,7 +324,7 @@ Shader "Phunky/phunky-toon-shader" {
                 "LightMode"="ShadowCaster"
             }
             Offset 1, 1
-            Cull Off
+            Cull [_Cull]
 
             CGPROGRAM
             #pragma vertex vert
@@ -363,7 +370,7 @@ Shader "Phunky/phunky-toon-shader" {
             Tags {
                 "LightMode"="Meta"
             }
-            Cull Off
+            Cull [_Cull]
 
             CGPROGRAM
             #pragma vertex vert

@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Phunky/grab-pass-blur" {
+Shader ".Phunky/grab-pass-blur" {
 	Properties {
 		_Factor("Factor", Range(0, 5)) = 1.0
 		[Enum(UnityEngine.Rendering.CullMode)] _CullMode ("Cull", Int) = 0

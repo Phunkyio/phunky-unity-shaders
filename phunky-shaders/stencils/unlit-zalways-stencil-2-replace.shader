@@ -1,4 +1,6 @@
-Shader "Phunky/unlit-zalways-stencil-2-replace" {
+//possibly delete
+
+Shader ".Phunky/unlit-zalways-stencil-2-replace" {
     Properties {
         _coloroverlay ("coloroverlay", Color) = (1,1,1,1)
         _MainTex ("MainTex", 2D) = "white" {}

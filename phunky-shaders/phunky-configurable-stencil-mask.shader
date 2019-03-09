@@ -1,25 +1,31 @@
-Shader "Phunky/Stencil/Configurable Stencil Mask"
+Shader ".Phunky/Configurable Stencil Mask"
 {
 	Properties{
-		[Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5, NotEqual, 6, Never, 7)] _CompFunction("Comparison Function", Int) = 0
-		[Enum(Keep, 0, Zero, 1, Replace, 2, IncrSat, 3, DecrSat, 4, Invert, 5, IncrWrap, 6, DecrWrap, 7)] _PassOp("Pass Operation") = 0
-		[Enum(Keep, 0, Zero, 1, Replace, 2, IncrSat, 3, DecrSat, 4, Invert, 5, IncrWrap, 6, DecrWrap, 7)] _FailOp("Fail Operation") = 0
-		[Enum(Keep, 0, Zero, 1, Replace, 2, IncrSat, 3, DecrSat, 4, Invert, 5, IncrWrap, 6, DecrWrap, 7)] _ZFailOp("ZFail Operation") = 0
-		[Enum(Off, 0, Front, 1, Back, 2)] _CullMode("Cull", Int) = 0
+		_Ref ("Stencil ID [0;255]", Float) = 0
+		//_ReadMask ("ReadMask [0;255]", Int) = 255
+		//_WriteMask ("WriteMask [0;255]", Int) = 255
+		[Enum(UnityEngine.Rendering.CompareFunction)] _CompFunction ("Stencil Comparison", Int) = 3
+		[Enum(UnityEngine.Rendering.StencilOp)] _PassOp ("Stencil Operation", Int) = 0
+		[Enum(UnityEngine.Rendering.StencilOp)] _FailOp ("Stencil Fail", Int) = 0
+		[Enum(UnityEngine.Rendering.StencilOp)] _ZFailOp ("Stencil ZFail", Int) = 0
+		[Enum(Off, 0, Front, 1, Back, 2)] _CullMode("Cull", Int) = 2
 		[Enum(Off, 0, On, 1)] _ZWriteMode("ZWrite", Int) = 1
 		[Enum(Always, 0, Less, 1, LEqual, 2, Equal, 3, GEqual, 4, Greater, 5)] _ZTestMode("ZTest", Int) = 2
+		[Enum(UnityEngine.Rendering.BlendMode)] _SrcBlend ("BlendSource", Float) = 1
+		[Enum(UnityEngine.Rendering.BlendMode)] _DstBlend ("BlendDestination", Float) = 0
 	}
 	SubShader{		
 		
-		Tags { "RenderType"="Opaque" "Queue"="Geometry-100"}
+		Tags { "RenderType"="Opaque" "Queue"="Transparent+1"}
 		
 		Cull [_CullMode]
 		ZWrite [_ZWriteMode]
 		ZTest [_ZTestMode]
+		Blend [_SrcAlpha] [_DstBlend]
 
 		ColorMask 0
 		Stencil{
-			Ref 1
+			Ref [_Ref]
 			Comp [_CompFunction]
 			Pass [_PassOp]
 			Fail [_FailOp]
@@ -56,6 +62,7 @@ Shader "Phunky/Stencil/Configurable Stencil Mask"
 		ENDCG
 		}
 	}
+	Fallback "Diffuse"
 }
 
 

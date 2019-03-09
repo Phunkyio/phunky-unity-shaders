@@ -1,4 +1,6 @@
-Shader "Phunky/stencil/unlit-color-zgreater-cullfront-stencil-1" {
+//Pretty sure another shader does this with more options. Maybe delete this?
+
+Shader ".Phunky/unlit-color-zgreater-cullfront-stencil-1" {
     Properties {
         _Color ("Color", Color) = (0,0,0,1)
     }

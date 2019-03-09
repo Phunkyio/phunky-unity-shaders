@@ -1,4 +1,6 @@
-Shader "Phunky/stencil/unlit-texture-zgreater-cullfront-stencil-1" {
+//keeping this for now
+
+Shader ".Phunky/stencil/unlit-texture-zgreater-cullfront-stencil-1" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("MainTex", 2D) = "white" {}

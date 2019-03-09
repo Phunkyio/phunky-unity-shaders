@@ -1,4 +1,4 @@
-﻿Shader "Phunky/hide-overlay-depth-mask" {
+﻿Shader ".Phunky/hide-overlay-depth-mask" {
 //shader has issues with skybox
 	SubShader{
 		// draw before transparent render queue:
